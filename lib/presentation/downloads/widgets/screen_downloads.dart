@@ -29,7 +29,7 @@ class ScreenDownloads extends StatelessWidget {
         body: ListView.separated(
             padding: EdgeInsets.all(10),
             itemBuilder: (ctx, index) => _Widgets[index],
-            separatorBuilder: (ctx, index) => SizedBox(
+            separatorBuilder: (ctx, index) => const SizedBox(
                   height: 30,
                 ),
             itemCount: _Widgets.length));
@@ -37,7 +37,7 @@ class ScreenDownloads extends StatelessWidget {
 }
 
 class Section2 extends StatelessWidget {
-  Section2({super.key});
+  const Section2({super.key});
   // final List imageList = [
   //   "https://www.themoviedb.org/t/p/w220_and_h330_face/cZ0d3rtvXPVvuiX22sP79K3Hmjz.jpg",
   //   "https://www.themoviedb.org/t/p/w220_and_h330_face/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
