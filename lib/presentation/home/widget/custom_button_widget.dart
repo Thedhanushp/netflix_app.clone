@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-//import 'package:netflix_app/core/constants.dart';
 
 import '../../../core/colors/colors.dart';
 
@@ -15,6 +14,7 @@ class custombuttonwidget extends StatelessWidget {
   final String title;
   final double iconsize;
   final double textsize;
+
   @override
   Widget build(BuildContext context) {
     return Column(

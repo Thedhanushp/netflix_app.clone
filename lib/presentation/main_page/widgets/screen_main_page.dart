@@ -1,7 +1,7 @@
-import 'dart:ffi';
+//import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/colors/colors.dart';
+//import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/presentation/downloads/widgets/screen_downloads.dart';
 import 'package:netflix_app/presentation/fast_laugh/screen_fast_laugh.dart';
 import 'package:netflix_app/presentation/home/screen_home.dart';

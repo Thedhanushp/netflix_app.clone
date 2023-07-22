@@ -1,6 +1,7 @@
 //import 'dart:math';
 
-import 'dart:math';
+// import 'dart:math';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -31,7 +32,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
       );
       final Either<MainFailures, List<Downloads>> downloadsOption =
           await _downloadsRepo.getDownloadsImage();
-
+      log(_downloadsRepo.toString());
       emit(
         downloadsOption.fold(
           (failure) => state.copyWith(

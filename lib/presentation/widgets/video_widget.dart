@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/colors/colors.dart';
-import '../../core/constants.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String url;
   const VideoWidget({
     super.key,
+    required this.url,
   });
 
   @override
@@ -18,8 +19,26 @@ class VideoWidget extends StatelessWidget {
           height: 200,
           //color: Colors.red,
           child: Image(
-            image: NetworkImage(newandHotTempImg),
+            image: NetworkImage(url), //old url newandHotTempImg
             fit: BoxFit.cover,
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progrss) {
+              if (progrss == null) {
+                return child;
+              } else {
+                return const Center(
+                    child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                ));
+              }
+            },
+            errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
+              return const Center(
+                  child: Icon(
+                Icons.wifi,
+                color: Colors.white,
+              ));
+            },
           ),
         ),
         Positioned(

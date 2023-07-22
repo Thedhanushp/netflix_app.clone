@@ -7,32 +7,44 @@ import '../../../core/constants.dart';
 import '../../home/widget/custom_button_widget.dart';
 
 class comingsoonWidget extends StatelessWidget {
-  const comingsoonWidget({
-    super.key,
-  });
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String description;
+
+  const comingsoonWidget(
+      {super.key,
+      required this.id,
+      required this.month,
+      required this.day,
+      required this.posterPath,
+      required this.movieName,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
-        const SizedBox(
+        SizedBox(
           width: 50,
           height: 500,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+            //mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "FEB",
-                style: TextStyle(
+                month,
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
                 ),
               ),
               Text(
-                "11",
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                   fontSize: 25,
                   letterSpacing: 4,
                   fontWeight: FontWeight.bold,
@@ -47,54 +59,58 @@ class comingsoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VideoWidget(),
+              VideoWidget(url: posterPath),
               Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    "John Wick:\nChapter 4",
-                    style: TextStyle(
-                      letterSpacing: -2.5,
-                      fontSize: 27,
-                      fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Text(
+                      movieName,
+                      maxLines: 4,
+                      overflow: TextOverflow.clip,
+                      style: const TextStyle(
+                        //letterSpacing: -2,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const Spacer(),
-                  Row(
-                    children: const [
-                      custombuttonwidget(
-                        icon: Icons.notifications,
-                        title: "Remind me",
-                        iconsize: 20,
-                        textsize: 11,
-                      ),
-                      CWidth,
-                      custombuttonwidget(
-                        icon: Icons.info,
-                        title: "Info",
-                        iconsize: 20,
-                        textsize: 11,
-                      ),
-                      CWidth,
-                    ],
-                  )
+                  const custombuttonwidget(
+                    icon: Icons.notifications,
+                    title: "Remind me",
+                    iconsize: 22,
+                    textsize: 11,
+                  ),
+                  CWidth,
+                  const custombuttonwidget(
+                    icon: Icons.info,
+                    title: "Info",
+                    iconsize: 22,
+                    textsize: 11,
+                  ),
+                  CWidth
                 ],
               ),
               kheight10,
-              const Text("Coming on Friday"),
+              Text("Coming on $day $month"),
               Kheight20,
-              const Text(
-                "John Wick: Chapter 4",
-                style: TextStyle(
-                  fontSize: 20,
+              Text(
+                movieName,
+                maxLines: 4,
+                //overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: KwhiteColor,
                 ),
               ),
               kheight10,
               Text(
-                "John Wick (Keanu Reeves) uncovers a path to defeating the High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
-                style: TextStyle(
+                description,
+                maxLines: 4,
+                style: const TextStyle(
                   fontSize: 12.5,
                   color: Colors.grey,
                 ),

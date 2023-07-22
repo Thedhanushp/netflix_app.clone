@@ -12,7 +12,7 @@ import 'package:netflix_app/domain/downloads/core/api_end_points.dart';
 import 'package:netflix_app/domain/downloads/core/failures/main_failure.dart';
 import 'package:dio/dio.dart';
 import 'package:netflix_app/domain/downloads/models/downloads.dart';
-import 'package:netflix_app/infrastructure/downloads/downloads_repository.dart';
+//import 'package:netflix_app/infrastructure/downloads/downloads_repository.dart';
 
 import '../../domain/downloads/i_downloads_repo.dart';
 
@@ -30,7 +30,7 @@ class DownloadsRepository implements IdownloadRepo {
         // for (final raw in response.data) {
         //   downloadsList.add(Downloads.fromJson(raw as Map<String, dynamic>));
         // }
-        final downloadsList = (response.data['result'] as List).map((e) {
+        final downloadsList = (response.data['results'] as List).map((e) {
           return Downloads.fromJson(e);
         }).toList();
 

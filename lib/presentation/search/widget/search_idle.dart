@@ -41,7 +41,7 @@ class SearchIdleWidget extends StatelessWidget {
                 itemBuilder: (ctx, index) {
                   final movie = state.idelList[index];
                   return TopSearchItemTile(
-                      title: movie.title ?? 'No title provider',
+                      title: movie.title ?? ' No title provider',
                       imageUrl: '$imageAppentUrl${movie.posterPath}');
                 },
                 separatorBuilder: (ctx, index) => Kheight20,
@@ -67,8 +67,8 @@ class TopSearchItemTile extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: screenWidth * 0.36,
-          height: 72,
+          width: screenWidth * 0.35,
+          height: 82,
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,

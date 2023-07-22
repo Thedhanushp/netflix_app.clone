@@ -6,12 +6,15 @@ import 'package:netflix_app/core/constants.dart';
 import 'package:netflix_app/presentation/search/widget/search_idle.dart';
 import 'package:netflix_app/presentation/search/widget/search_result.dart';
 
-class ScreenSearch extends StatelessWidget {
-  const ScreenSearch({super.key});
+import '../../domain/downloads/core/debounce/debouce.dart';
 
+class ScreenSearch extends StatelessWidget {
+  ScreenSearch({super.key});
+  final _debouncer = Debouncer(milliseconds: 1 * 1000);
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      //!
       BlocProvider.of<SearchBloc>(context).add(const Initialize());
     });
     return Scaffold(
@@ -31,10 +34,31 @@ class ScreenSearch extends StatelessWidget {
               CupertinoIcons.xmark_circle_fill,
               color: Colors.grey,
             ),
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
+            onChanged: (value) {
+              if (value.isEmpty) {
+                return;
+              }
+              _debouncer.run(() {
+                BlocProvider.of<SearchBloc>(context)
+                    .add(SearchMovie(movieQuery: value));
+              });
+            },
           ),
           Kheight,
-          Expanded(child: SearchIdleWidget()),
+
+          Expanded(
+            child: BlocBuilder<SearchBloc, SearchState>(
+              builder: (context, state) {
+                if (state.searchResultList.isEmpty) {
+                  return SearchIdleWidget();
+                } else {
+                  return const SearchResultWidget();
+                }
+              },
+            ),
+          ),
+          // )(child: SearchIdleWidget())),//old function
           //const Expanded(child: SearchResultWidget()),
         ],
       ),

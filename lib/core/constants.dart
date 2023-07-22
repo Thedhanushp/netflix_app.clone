@@ -20,7 +20,7 @@ final BorderRadius kRadius20 = BorderRadius.circular(20);
 final BorderRadius kradius30 = BorderRadius.circular(30);
 //image
 const Kmainimage =
-    "https://www.themoviedb.org/t/p/w220_and_h330_face/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg";
+    "https://www.themoviedb.org/t/p/w220_and_h330_face/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg";
 //text style
 TextStyle Khometitletext = const TextStyle(
   fontSize: 14,
@@ -29,3 +29,6 @@ TextStyle Khometitletext = const TextStyle(
 const newandHotTempImg =
     "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/7I6VUdPj6tQECNHdviJkUHD2u89.jpg";
 const imageAppentUrl = 'https://image.tmdb.org/t/p/w500';
+
+const netflixLogo =
+    "https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456";
